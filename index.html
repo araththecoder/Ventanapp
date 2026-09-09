@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventanapp</title>
+
+  <style>
+    :root {
+      --primario: #0b5fa5;
+      --secundario: #083b66;
+      --acento: #f4b942;
+      --fondo: #f4f8fb;
+      --oscuro: #102a43;
+      --texto: #334e68;
+      --blanco: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--fondo);
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    nav {
+      width: 100%;
+      background-color: var(--oscuro);
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: var(--blanco);
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--blanco);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--acento);
+    }
+
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 10%;
+      background: linear-gradient(135deg, var(--primario), var(--secundario));
+      color: var(--blanco);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 750px;
+      margin-bottom: 35px;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: var(--acento);
+      color: var(--oscuro);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .boton:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .servicios {
+      padding: 80px 8%;
+      text-align: center;
+    }
+
+    .servicios h2 {
+      font-size: 2.5rem;
+      color: var(--oscuro);
+      margin-bottom: 15px;
+    }
+
+    .servicios > p {
+      margin-bottom: 45px;
+    }
+
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .tarjeta {
+      background-color: var(--blanco);
+      padding: 35px 30px;
+      border-radius: 12px;
+      text-align: left;
+      box-shadow: 0 5px 20px rgba(15, 23, 42, 0.08);
+      transition: 0.3s;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-8px);
+    }
+
+    .tarjeta h3 {
+      color: var(--primario);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .dato {
+      display: inline-block;
+      background-color: #d9ecf8;
+      color: var(--secundario);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    footer {
+      background-color: var(--oscuro);
+      color: var(--blanco);
+      text-align: center;
+      padding: 30px 8%;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .tarjetas {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#inicio" class="logo">Ventanapp</a>
+
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <h1>Encuentra las ventanas ideales para tu proyecto</h1>
+
+      <p>
+        Ventanapp facilita la búsqueda, comparación y conexión con proveedores de ventanas y soluciones de cancelería para que encuentres la mejor opción para tu proyecto.
+      </p>
+
+      <a href="#servicios" class="boton">Conoce Ventanapp</a>
+    </section>
+
+    <section class="servicios" id="servicios">
+      <h2>Todo lo que necesitas para tus ventanas</h2>
+
+      <p>
+        Una plataforma diseñada para facilitar la elección de las mejores soluciones para cada proyecto.
+      </p>
+
+      <div class="tarjetas">
+
+        <article class="tarjeta">
+          <h3>Busca y compara</h3>
+          <span class="dato">Múltiples opciones</span>
+          <p>
+            Encuentra diferentes tipos de ventanas, materiales y proveedores para comparar las opciones disponibles de acuerdo con las necesidades de tu proyecto.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Cotizaciones rápidas</h3>
+          <span class="dato">Ahorra tiempo</span>
+          <p>
+            Solicita información y cotizaciones para conocer las alternativas que mejor se adapten a tu presupuesto y a las características de tu construcción.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Encuentra profesionales</h3>
+          <span class="dato">Proveedores especializados</span>
+          <p>
+            Conecta con empresas y profesionales especializados en ventanas, aluminio, PVC y cristal para llevar tu proyecto a la realidad.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contacto">
+    <p>© 2026 Ventanapp. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
