@@ -7,13 +7,14 @@
 
   <style>
     :root {
-      --primario: #0b5fa5;
-      --secundario: #083b66;
-      --acento: #f4b942;
-      --fondo: #f4f8fb;
-      --oscuro: #102a43;
-      --texto: #334e68;
+      --primario: #dd6a1f;
+      --secundario: #a3450f;
+      --acento: #f5a445;
+      --fondo: #fff8f2;
+      --oscuro: #2b1608;
+      --texto: #5c4433;
       --blanco: #ffffff;
+      --linea: #f0d9c4;
     }
 
     * {
@@ -89,7 +90,18 @@
     .hero p {
       font-size: 1.2rem;
       max-width: 750px;
+      margin-bottom: 20px;
+    }
+
+    .frase-motivadora {
+      max-width: 700px;
       margin-bottom: 35px;
+      padding: 18px 26px;
+      border-left: 3px solid var(--acento);
+      background-color: rgba(255, 255, 255, 0.08);
+      font-size: 1.15rem;
+      font-style: italic;
+      text-align: left;
     }
 
     .boton {
@@ -101,6 +113,9 @@
       border-radius: 8px;
       font-weight: bold;
       transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
     }
 
     .boton:hover {
@@ -108,19 +123,33 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .servicios {
+    .boton-secundario {
+      background-color: transparent;
+      color: var(--blanco);
+      border: 2px solid var(--blanco);
+    }
+
+    .boton-secundario:hover {
+      background-color: var(--blanco);
+      color: var(--secundario);
+    }
+
+    section {
       padding: 80px 8%;
       text-align: center;
     }
 
-    .servicios h2 {
+    section h2 {
       font-size: 2.5rem;
       color: var(--oscuro);
       margin-bottom: 15px;
     }
 
-    .servicios > p {
+    section > p.subtitulo {
       margin-bottom: 45px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .tarjetas {
@@ -136,8 +165,9 @@
       padding: 35px 30px;
       border-radius: 12px;
       text-align: left;
-      box-shadow: 0 5px 20px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 5px 20px rgba(163, 69, 15, 0.08);
       transition: 0.3s;
+      border-top: 3px solid var(--primario);
     }
 
     .tarjeta:hover {
@@ -152,13 +182,112 @@
 
     .dato {
       display: inline-block;
-      background-color: #d9ecf8;
+      background-color: #fde3cc;
       color: var(--secundario);
       padding: 6px 12px;
       border-radius: 20px;
       font-size: 0.9rem;
       font-weight: bold;
       margin-bottom: 18px;
+    }
+
+    /* Calculadora */
+    .calculadora-wrap {
+      background-color: var(--blanco);
+    }
+
+    .calculadora {
+      max-width: 560px;
+      margin: auto;
+      background: linear-gradient(135deg, #fff, #fff3e8);
+      border: 1px solid var(--linea);
+      border-radius: 16px;
+      padding: 40px 35px;
+      box-shadow: 0 10px 30px rgba(163, 69, 15, 0.1);
+    }
+
+    .campo {
+      text-align: left;
+      margin-bottom: 22px;
+    }
+
+    .campo label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: var(--oscuro);
+    }
+
+    .campo input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--linea);
+      border-radius: 8px;
+      font-size: 1.1rem;
+      color: var(--texto);
+      transition: 0.2s;
+    }
+
+    .campo input:focus {
+      outline: none;
+      border-color: var(--primario);
+    }
+
+    .precio-unitario {
+      font-size: 0.9rem;
+      color: var(--texto);
+      margin-top: 6px;
+    }
+
+    .resultado {
+      margin-top: 25px;
+      padding: 22px;
+      border-radius: 10px;
+      background-color: var(--oscuro);
+      color: var(--blanco);
+      text-align: left;
+      display: none;
+    }
+
+    .resultado.visible {
+      display: block;
+    }
+
+    .resultado .monto {
+      font-size: 2rem;
+      color: var(--acento);
+      font-weight: bold;
+      margin-top: 6px;
+    }
+
+    /* Contacto MOGAMEX */
+    .contacto {
+      background: linear-gradient(135deg, var(--secundario), var(--oscuro));
+      color: var(--blanco);
+    }
+
+    .contacto h2 {
+      color: var(--blanco);
+    }
+
+    .contacto-caja {
+      max-width: 600px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 40px 35px;
+    }
+
+    .contacto-caja p {
+      margin-bottom: 25px;
+    }
+
+    .botones-contacto {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     footer {
@@ -181,6 +310,14 @@
       .nav-links {
         gap: 15px;
       }
+
+      .frase-motivadora {
+        text-align: center;
+      }
+
+      .calculadora {
+        padding: 30px 22px;
+      }
     }
   </style>
 </head>
@@ -193,6 +330,7 @@
     <ul class="nav-links">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#calculadora">Calculadora</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
@@ -206,13 +344,17 @@
         Ventanapp facilita la búsqueda, comparación y conexión con proveedores de ventanas y soluciones de cancelería para que encuentres la mejor opción para tu proyecto.
       </p>
 
-      <a href="#servicios" class="boton">Conoce Ventanapp</a>
+      <p class="frase-motivadora">
+        Las ventanas correctas transforman la luz, el confort y el valor de un espacio. No dejes esa decisión al azar: cuéntanos tu proyecto y te ayudamos a elegir bien.
+      </p>
+
+      <a href="#calculadora" class="boton">Calcula tu presupuesto</a>
     </section>
 
-    <section class="servicios" id="servicios">
+    <section id="servicios">
       <h2>Todo lo que necesitas para tus ventanas</h2>
 
-      <p>
+      <p class="subtitulo">
         Una plataforma diseñada para facilitar la elección de las mejores soluciones para cada proyecto.
       </p>
 
@@ -245,11 +387,74 @@
       </div>
     </section>
 
+    <section class="calculadora-wrap" id="calculadora">
+      <h2>Calcula el costo de tus ventanas</h2>
+      <p class="subtitulo">
+        Ingresa los metros cuadrados de ventana que necesitas y obtén una estimación al instante.
+      </p>
+
+      <div class="calculadora">
+        <div class="campo">
+          <label for="metros">Metros cuadrados de ventana</label>
+          <input type="number" id="metros" min="0" step="0.1" placeholder="Ej. 12.5">
+          <p class="precio-unitario">Precio de referencia: $4,800 MXN por m²</p>
+        </div>
+
+        <button class="boton" onclick="calcularPresupuesto()">Calcular presupuesto</button>
+
+        <div class="resultado" id="resultado">
+          <p>Presupuesto estimado para <span id="metros-mostrados">0</span> m²:</p>
+          <p class="monto" id="monto-total">$0 MXN</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+      <h2>Contacta con MOGAMEX</h2>
+
+      <div class="contacto-caja">
+        <p>
+          En MOGAMEX contamos con especialistas listos para asesorarte en tu proyecto de ventanas, desde la selección del material hasta la instalación final.
+        </p>
+
+        <div class="botones-contacto">
+          <a href="https://wa.me/525500000000" class="boton" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          <a href="mailto:contacto@mogamex.com" class="boton boton-secundario">Enviar correo</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer id="contacto">
+  <footer>
     <p>© 2026 Ventanapp. Todos los derechos reservados.</p>
   </footer>
+
+  <script>
+    function calcularPresupuesto() {
+      const precioPorMetro = 4800;
+      const input = document.getElementById('metros');
+      const metros = parseFloat(input.value);
+      const resultado = document.getElementById('resultado');
+
+      if (isNaN(metros) || metros <= 0) {
+        resultado.classList.remove('visible');
+        input.focus();
+        return;
+      }
+
+      const total = metros * precioPorMetro;
+
+      document.getElementById('metros-mostrados').textContent = metros;
+      document.getElementById('monto-total').textContent = total.toLocaleString('es-MX', {
+        style: 'currency',
+        currency: 'MXN',
+        maximumFractionDigits: 0
+      });
+
+      resultado.classList.add('visible');
+    }
+  </script>
 
 </body>
 </html>
