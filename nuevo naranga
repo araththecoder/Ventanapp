@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventanapp</title>
+
+  <style>
+    :root {
+      --primario: #dd6a1f;
+      --secundario: #a3450f;
+      --acento: #f5a445;
+      --fondo: #fff8f2;
+      --oscuro: #2b1608;
+      --texto: #5c4433;
+      --blanco: #ffffff;
+      --linea: #f0d9c4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--fondo);
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    nav {
+      width: 100%;
+      background-color: var(--oscuro);
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: var(--blanco);
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--blanco);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--acento);
+    }
+
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 10%;
+      background: linear-gradient(135deg, var(--primario), var(--secundario));
+      color: var(--blanco);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 750px;
+      margin-bottom: 20px;
+    }
+
+    .frase-motivadora {
+      max-width: 700px;
+      margin-bottom: 35px;
+      padding: 18px 26px;
+      border-left: 3px solid var(--acento);
+      background-color: rgba(255, 255, 255, 0.08);
+      font-size: 1.15rem;
+      font-style: italic;
+      text-align: left;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: var(--acento);
+      color: var(--oscuro);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .boton:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .boton-secundario {
+      background-color: transparent;
+      color: var(--blanco);
+      border: 2px solid var(--blanco);
+    }
+
+    .boton-secundario:hover {
+      background-color: var(--blanco);
+      color: var(--secundario);
+    }
+
+    section {
+      padding: 80px 8%;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      color: var(--oscuro);
+      margin-bottom: 15px;
+    }
+
+    section > p.subtitulo {
+      margin-bottom: 45px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .tarjeta {
+      background-color: var(--blanco);
+      padding: 35px 30px;
+      border-radius: 12px;
+      text-align: left;
+      box-shadow: 0 5px 20px rgba(163, 69, 15, 0.08);
+      transition: 0.3s;
+      border-top: 3px solid var(--primario);
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-8px);
+    }
+
+    .tarjeta h3 {
+      color: var(--primario);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .dato {
+      display: inline-block;
+      background-color: #fde3cc;
+      color: var(--secundario);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    /* Calculadora */
+    .calculadora-wrap {
+      background-color: var(--blanco);
+    }
+
+    .calculadora {
+      max-width: 560px;
+      margin: auto;
+      background: linear-gradient(135deg, #fff, #fff3e8);
+      border: 1px solid var(--linea);
+      border-radius: 16px;
+      padding: 40px 35px;
+      box-shadow: 0 10px 30px rgba(163, 69, 15, 0.1);
+    }
+
+    .campo {
+      text-align: left;
+      margin-bottom: 22px;
+    }
+
+    .campo label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: var(--oscuro);
+    }
+
+    .campo input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--linea);
+      border-radius: 8px;
+      font-size: 1.1rem;
+      color: var(--texto);
+      transition: 0.2s;
+    }
+
+    .campo input:focus {
+      outline: none;
+      border-color: var(--primario);
+    }
+
+    .precio-unitario {
+      font-size: 0.9rem;
+      color: var(--texto);
+      margin-top: 6px;
+    }
+
+    .resultado {
+      margin-top: 25px;
+      padding: 22px;
+      border-radius: 10px;
+      background-color: var(--oscuro);
+      color: var(--blanco);
+      text-align: left;
+      display: none;
+    }
+
+    .resultado.visible {
+      display: block;
+    }
+
+    .resultado .monto {
+      font-size: 2rem;
+      color: var(--acento);
+      font-weight: bold;
+      margin-top: 6px;
+    }
+
+    /* Contacto MOGAMEX */
+    .contacto {
+      background: linear-gradient(135deg, var(--secundario), var(--oscuro));
+      color: var(--blanco);
+    }
+
+    .contacto h2 {
+      color: var(--blanco);
+    }
+
+    .contacto-caja {
+      max-width: 600px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 40px 35px;
+    }
+
+    .contacto-caja p {
+      margin-bottom: 25px;
+    }
+
+    .botones-contacto {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      background-color: var(--oscuro);
+      color: var(--blanco);
+      text-align: center;
+      padding: 30px 8%;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .tarjetas {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .frase-motivadora {
+        text-align: center;
+      }
+
+      .calculadora {
+        padding: 30px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#inicio" class="logo">Ventanapp</a>
+
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#calculadora">Calculadora</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <h1>Encuentra las ventanas ideales para tu proyecto</h1>
+
+      <p>
+        Ventanapp facilita la búsqueda, comparación y conexión con proveedores de ventanas y soluciones de cancelería para que encuentres la mejor opción para tu proyecto.
+      </p>
+
+      <p class="frase-motivadora">
+        Las ventanas correctas transforman la luz, el confort y el valor de un espacio. No dejes esa decisión al azar: cuéntanos tu proyecto y te ayudamos a elegir bien.
+      </p>
+
+      <a href="#calculadora" class="boton">Calcula tu presupuesto</a>
+    </section>
+
+    <section id="servicios">
+      <h2>Todo lo que necesitas para tus ventanas</h2>
+
+      <p class="subtitulo">
+        Una plataforma diseñada para facilitar la elección de las mejores soluciones para cada proyecto.
+      </p>
+
+      <div class="tarjetas">
+
+        <article class="tarjeta">
+          <h3>Busca y compara</h3>
+          <span class="dato">Múltiples opciones</span>
+          <p>
+            Encuentra diferentes tipos de ventanas, materiales y proveedores para comparar las opciones disponibles de acuerdo con las necesidades de tu proyecto.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Cotizaciones rápidas</h3>
+          <span class="dato">Ahorra tiempo</span>
+          <p>
+            Solicita información y cotizaciones para conocer las alternativas que mejor se adapten a tu presupuesto y a las características de tu construcción.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Encuentra profesionales</h3>
+          <span class="dato">Proveedores especializados</span>
+          <p>
+            Conecta con empresas y profesionales especializados en ventanas, aluminio, PVC y cristal para llevar tu proyecto a la realidad.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="calculadora-wrap" id="calculadora">
+      <h2>Calcula el costo de tus ventanas</h2>
+      <p class="subtitulo">
+        Ingresa los metros cuadrados de ventana que necesitas y obtén una estimación al instante.
+      </p>
+
+      <div class="calculadora">
+        <div class="campo">
+          <label for="metros">Metros cuadrados de ventana</label>
+          <input type="number" id="metros" min="0" step="0.1" placeholder="Ej. 12.5">
+          <p class="precio-unitario">Precio de referencia: $4,800 MXN por m²</p>
+        </div>
+
+        <button class="boton" onclick="calcularPresupuesto()">Calcular presupuesto</button>
+
+        <div class="resultado" id="resultado">
+          <p>Presupuesto estimado para <span id="metros-mostrados">0</span> m²:</p>
+          <p class="monto" id="monto-total">$0 MXN</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+      <h2>Contacta con MOGAMEX</h2>
+
+      <div class="contacto-caja">
+        <p>
+          En MOGAMEX contamos con especialistas listos para asesorarte en tu proyecto de ventanas, desde la selección del material hasta la instalación final.
+        </p>
+
+        <div class="botones-contacto">
+          <a href="https://wa.me/525500000000" class="boton" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          <a href="mailto:contacto@mogamex.com" class="boton boton-secundario">Enviar correo</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Ventanapp. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function calcularPresupuesto() {
+      const precioPorMetro = 4800;
+      const input = document.getElementById('metros');
+      const metros = parseFloat(input.value);
+      const resultado = document.getElementById('resultado');
+
+      if (isNaN(metros) || metros <= 0) {
+        resultado.classList.remove('visible');
+        input.focus();
+        return;
+      }
+
+      const total = metros * precioPorMetro;
+
+      document.getElementById('metros-mostrados').textContent = metros;
+      document.getElementById('monto-total').textContent = total.toLocaleString('es-MX', {
+        style: 'currency',
+        currency: 'MXN',
+        maximumFractionDigits: 0
+      });
+
+      resultado.classList.add('visible');
+    }
+  </script>
+
+</body>
+</html>
